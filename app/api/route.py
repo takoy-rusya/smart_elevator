@@ -1,11 +1,18 @@
 from fastapi import APIRouter
 
-from smart_elevator.app.api.use_case import call_elevator, select_floor, status_elevator
-from smart_elevator.app.models.dto import StatusResponse, SelectResponse, CallResponse
+from app.api.use_case import (
+    call_elevator,
+    select_floor,
+    status_elevator
+)
+from app.models.dto import (
+    StatusResponse,
+    SelectResponse,
+    CallResponse
+)
 
 
 def router() -> APIRouter:
-
     route = APIRouter(tags=["API"])
 
     route.add_api_route(

@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from smart_elevator.app.api.route import router
+from app.api.route import router
 
 app = FastAPI()
 app.include_router(router=router())
