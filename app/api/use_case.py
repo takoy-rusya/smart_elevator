@@ -12,6 +12,13 @@ from app.core.scheduler import elevator_scheduler
 
 
 async def call_elevator(request: CallRequest) -> CallResponse:
+    """
+    Args:
+        request: Запрос с номером этажа для вызова
+
+    Returns:
+        CallResponse: Подтверждение принятия вызова
+    """
     await elevator_scheduler.add_call(request.floor)
 
     return CallResponse(
@@ -22,6 +29,14 @@ async def call_elevator(request: CallRequest) -> CallResponse:
 
 
 async def select_floor(request: SelectRequest) -> SelectResponse:
+    """
+     Args:
+        request: Запрос с номером этажа назначения
+
+    Returns:
+        SelectResponse: Подтверждение добавления этажа в маршрут
+
+    """
     success = await elevator_scheduler.add_destination(request.floor)
     if not success:
         raise HTTPException(
@@ -36,6 +51,10 @@ async def select_floor(request: SelectRequest) -> SelectResponse:
 
 
 async def status_elevator() -> StatusResponse:
+    """
+    Returns:
+        StatusResponse: Текущее состояние, положение, направление и маршрут лифта
+    """
     stat = elevator_scheduler.get_status()
 
     return StatusResponse(
