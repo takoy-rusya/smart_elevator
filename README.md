@@ -155,11 +155,6 @@ curl -X POST http://localhost:8000/select -H "Content-Type: application/json" -d
 pytest -v
 ```
 
-- В docker-compose:
-```bash
-docker-compose run --rm elevator-tests
-```
-
 ## Лицензия
 
 См. `LICENSE`.
